@@ -1,0 +1,1 @@
+/usr/bin/c++ -g CMakeFiles/SemestralnaPracaKlient.dir/main.cpp.o CMakeFiles/SemestralnaPracaKlient.dir/my_socket.cpp.o -o SemestralnaPracaKlient  -lws2_32 
