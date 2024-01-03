@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/tmp/tmp.X1uWlasjxx/main.cpp
+iostream
+-
+thread
+-
+mutex
+-
+queue
+-
+random
+-
+string
+-
+my_socket.h
+/tmp/tmp.X1uWlasjxx/my_socket.h
+
+/tmp/tmp.X1uWlasjxx/my_socket.cpp
+my_socket.h
+/tmp/tmp.X1uWlasjxx/my_socket.h
+stdexcept
+-
+ws2tcpip.h
+-
+winsock2.h
+-
+
+/tmp/tmp.X1uWlasjxx/my_socket.h
+winsock2.h
+-
+string
+-
+

@@ -1,0 +1,3 @@
+C:/Users/Miso/Desktop/PoS/SemestralnaPracaKlient/cmake-build-debug-vs/CMakeFiles/SemestralnaPracaKlient.dir
+C:/Users/Miso/Desktop/PoS/SemestralnaPracaKlient/cmake-build-debug-vs/CMakeFiles/edit_cache.dir
+C:/Users/Miso/Desktop/PoS/SemestralnaPracaKlient/cmake-build-debug-vs/CMakeFiles/rebuild_cache.dir
