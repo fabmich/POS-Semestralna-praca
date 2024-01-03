@@ -1,0 +1,46 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/tmp/tmp.bj8FyVHl8L/main.c
+stdio.h
+-
+pthread.h
+-
+pos_sockets/char_buffer.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/char_buffer.h
+pos_sockets/active_socket.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.h
+pos_sockets/passive_socket.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/passive_socket.h
+
+/tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.h
+pthread.h
+-
+char_buffer.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/char_buffer.h
+linked_list.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/linked_list.h
+
+/tmp/tmp.bj8FyVHl8L/pos_sockets/char_buffer.h
+stdlib.h
+-
+
+/tmp/tmp.bj8FyVHl8L/pos_sockets/linked_list.h
+stdlib.h
+-
+stdbool.h
+-
+
+/tmp/tmp.bj8FyVHl8L/pos_sockets/passive_socket.h
+stdbool.h
+-
+pthread.h
+-
+active_socket.h
+/tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.h
+
