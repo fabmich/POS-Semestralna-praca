@@ -89,7 +89,7 @@ void MySocket::sendEndMessage() {
 }
 
 std::string MySocket::receiveData() {
-    const int bufferSize = 4;
+    const int bufferSize = 10;
     char buffer[bufferSize];
     std::string data = "";
 

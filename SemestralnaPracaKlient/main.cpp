@@ -16,7 +16,8 @@ typedef struct thread_data {
     char hraciaPlocha[POCET_RIADKOV][POCET_STLPCOV];
     bool hraSkoncila;
     bool jeKlientNaRade;
-    char znakServerHraca;
+    char znakClientHraca;
+    int vysledokHry;
 
     std::string dataNaOdoslanie;
     std::string prijateData;
@@ -34,10 +35,11 @@ void thread_data_init(struct thread_data *data, MySocket *mySocket) {
             data->hraciaPlocha[riadok][stlpec] = '.';
         }
     }
-    data->znakServerHraca = 'O';
+//    data->znakClientHraca = 'O';
     data->hraSkoncila = false;
     data->jeKlientNaRade = false;
     data->mySocket = mySocket;
+    data->vysledokHry = 0;
 }
 
 
@@ -83,19 +85,49 @@ void *produce(void *thread_data) {
 
         }
 
+        if (data->hraSkoncila) {
+            break;
+        }
+
         int riadokIndex = -1;
         int stlpecIndex = -1;
 
-        std::cout << "\n Zadaj poziciu (napr. 1 2): \n";
-        std::cin >> riadokIndex >> stlpecIndex;
+        std::cout << "\n Zadaj poziciu stlpca do ktoreho chcete vkladat: \n";
+        std::cin >> stlpecIndex;
 
-        data->hraciaPlocha[riadokIndex][stlpecIndex] = data->znakServerHraca;
+        if (stlpecIndex < 0 || stlpecIndex >= POCET_STLPCOV || data->hraciaPlocha[0][stlpecIndex] != '.') {
+            printf("\nDo zvoleneho stlpca (%d) nemozno vlozit symbol: ", stlpecIndex);
+            if (stlpecIndex < 0 || stlpecIndex >= POCET_STLPCOV) {
+                printf("Index je mimo hracej plochy\n");
+            } else if (data->hraciaPlocha[0][stlpecIndex] != '.') {
+                printf("Stlpec je plny\n");
+            }
+        }
+        else {
+            for (int i = 0; i < POCET_RIADKOV; ++i) {
+                if (data->hraciaPlocha[i + 1][stlpecIndex] != '.' && i < POCET_RIADKOV - 1) {
+                    riadokIndex = i;
+                    data->hraciaPlocha[riadokIndex][stlpecIndex] = data->znakClientHraca;
+                    break;
+
+                } else if (data->hraciaPlocha[i][stlpecIndex] == '.' && i == POCET_RIADKOV - 1) {
+                    riadokIndex = i;
+                    data->hraciaPlocha[riadokIndex][stlpecIndex] = data->znakClientHraca;
+                    break;
+                }
+
+            }
+
+
+
+        data->hraciaPlocha[riadokIndex][stlpecIndex] = data->znakClientHraca;
 
         data->mySocket->sendData(std::to_string(riadokIndex) + " " + std::to_string(stlpecIndex));
 
         vykresliHraciuPlochu(data);
         data->jeKlientNaRade = false;
 
+        }
     }
 
     return nullptr;
@@ -111,41 +143,83 @@ void *consume(void *thread_data) {
         std::string dataFromServer = data->mySocket->receiveData();//ziskanie dat od servra
 
         if (!dataFromServer.empty() && dataLastRecieved != dataFromServer) {
-            std::cout << dataFromServer << std::endl;//????
+//            std::cout << dataFromServer << std::endl;//????
 
             //ziskanie dat zo stringu
             std::istringstream iss(dataFromServer);
-            int riadok, stlpec;
+            int riadok, stlpec, vysledokHry;
+            char znakServra, znakClienta;
 
             //zapisanie dat do hracej plochy u klientovej hracej plochy
-            if (iss >> riadok >> stlpec) {
-                data->hraciaPlocha[riadok][stlpec] = 'X';
+            if (iss >> riadok >> stlpec >> vysledokHry >>  znakServra >>znakClienta ) {
+
+                if (vysledokHry != data->vysledokHry) {
+                    data->mySocket->sendEndMessage();
+
+                    data->vysledokHry = vysledokHry;
+
+                    data->hraSkoncila = true;
+                    data->jeKlientNaRade = true;
+                    data->jeClientHracNaRade.notify_all();
+
+                    break;
+                }
+
+                data->hraciaPlocha[riadok][stlpec] = znakServra;
+                data->znakClientHraca = znakClienta;
+
+                vykresliHraciuPlochu(data);
+
+                data->jeClientHracNaRade.notify_all();
+
+                data->jeKlientNaRade = true;
+
+                dataLastRecieved = dataFromServer;
+
+            } else {
+                data->mySocket->sendEndMessage();
+
+                data->hraSkoncila = true;
+                data->jeKlientNaRade = true;
+                data->jeClientHracNaRade.notify_all();
+                break;
             }
-            vykresliHraciuPlochu(data);
 
-            data->jeClientHracNaRade.notify_all();
-
-            data->jeKlientNaRade = true;
-
-            dataLastRecieved = dataFromServer;
         }
 
 
     }
 
+    if (data->vysledokHry == 1) {
+        std::cout << "Vyhral hrac na servi, gratulujeme!" << std::endl;
+    } else if (data->vysledokHry == 2) {
+        std::cout << "Vyhrali ste, gratulujeme!" << std::endl;
+    }
+
+
     return nullptr;
 
 }
 
-int main() {//todo argument
+int main(int args, char **argv) {//poradie: server, port
 
-    std::string ipAdresa = "frios2.fri.uniza.sk";
+    std::string server;
+    short port;
+
+    if (args > 2) {
+        server = argv[1];
+        port = atoi(argv[2]);
+    }
+    else {
+        server = "frios2.fri.uniza.sk";
+        port = 15071;
+    }
+
 //std::string ipAdresa = "91.127.42.240";
 
     THREAD_DATA data;
 
-    MySocket *mySocket = MySocket::createConnection(ipAdresa, 15069);
-
+    MySocket *mySocket = MySocket::createConnection(server, port);
     thread_data_init(&data, mySocket);
 
 
