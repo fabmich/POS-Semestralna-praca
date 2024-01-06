@@ -17,6 +17,8 @@ pos_sockets/active_socket.h
 /tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.h
 pos_sockets/passive_socket.h
 /tmp/tmp.bj8FyVHl8L/pos_sockets/passive_socket.h
+string.h
+-
 
 /tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.h
 pthread.h

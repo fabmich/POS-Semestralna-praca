@@ -76,22 +76,9 @@ include CMakeFiles/SemestralnaPracaServer.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/SemestralnaPracaServer.dir/flags.make
 
-CMakeFiles/SemestralnaPracaServer.dir/main.c.o: CMakeFiles/SemestralnaPracaServer.dir/flags.make
-CMakeFiles/SemestralnaPracaServer.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SemestralnaPracaServer.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SemestralnaPracaServer.dir/main.c.o -c /tmp/tmp.bj8FyVHl8L/main.c
-
-CMakeFiles/SemestralnaPracaServer.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/SemestralnaPracaServer.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /tmp/tmp.bj8FyVHl8L/main.c > CMakeFiles/SemestralnaPracaServer.dir/main.c.i
-
-CMakeFiles/SemestralnaPracaServer.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/SemestralnaPracaServer.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /tmp/tmp.bj8FyVHl8L/main.c -o CMakeFiles/SemestralnaPracaServer.dir/main.c.s
-
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o: CMakeFiles/SemestralnaPracaServer.dir/flags.make
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o: ../pos_sockets/passive_socket.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o -c /tmp/tmp.bj8FyVHl8L/pos_sockets/passive_socket.c
 
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.i: cmake_force
@@ -104,7 +91,7 @@ CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.s: cmake_forc
 
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o: CMakeFiles/SemestralnaPracaServer.dir/flags.make
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o: ../pos_sockets/char_buffer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o -c /tmp/tmp.bj8FyVHl8L/pos_sockets/char_buffer.c
 
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.i: cmake_force
@@ -117,7 +104,7 @@ CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.s: cmake_force
 
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o: CMakeFiles/SemestralnaPracaServer.dir/flags.make
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o: ../pos_sockets/active_socket.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o -c /tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.c
 
 CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.i: cmake_force
@@ -130,7 +117,6 @@ CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.s: cmake_force
 
 # Object files for target SemestralnaPracaServer
 SemestralnaPracaServer_OBJECTS = \
-"CMakeFiles/SemestralnaPracaServer.dir/main.c.o" \
 "CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o" \
 "CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o" \
 "CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o"
@@ -138,13 +124,12 @@ SemestralnaPracaServer_OBJECTS = \
 # External object files for target SemestralnaPracaServer
 SemestralnaPracaServer_EXTERNAL_OBJECTS =
 
-SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/main.c.o
 SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o
 SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o
 SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o
 SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/build.make
 SemestralnaPracaServer: CMakeFiles/SemestralnaPracaServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable SemestralnaPracaServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable SemestralnaPracaServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SemestralnaPracaServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

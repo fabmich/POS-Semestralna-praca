@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/tmp/tmp.bj8FyVHl8L/main.c" "/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles/SemestralnaPracaServer.dir/main.c.o"
   "/tmp/tmp.bj8FyVHl8L/pos_sockets/active_socket.c" "/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/active_socket.c.o"
   "/tmp/tmp.bj8FyVHl8L/pos_sockets/char_buffer.c" "/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/char_buffer.c.o"
   "/tmp/tmp.bj8FyVHl8L/pos_sockets/passive_socket.c" "/tmp/tmp.bj8FyVHl8L/cmake-build-debug/CMakeFiles/SemestralnaPracaServer.dir/pos_sockets/passive_socket.c.o"
