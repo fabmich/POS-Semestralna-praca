@@ -63,6 +63,27 @@ build CMakeFiles\SemestralnaPracaKlient.dir\my_socket.cpp.obj: CXX_COMPILER__Sem
   TARGET_COMPILE_PDB = CMakeFiles\SemestralnaPracaKlient.dir\
   TARGET_PDB = SemestralnaPracaKlient.pdb
 
+build CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures\Hra.cpp.obj: CXX_COMPILER__SemestralnaPracaKlient_unscanned_Debug C$:\Users\Miso\Desktop\PoS\SemestralnaPracaKlient\connect4\structures\Hra.cpp || cmake_object_order_depends_target_SemestralnaPracaKlient
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  OBJECT_DIR = CMakeFiles\SemestralnaPracaKlient.dir
+  OBJECT_FILE_DIR = CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures
+  TARGET_COMPILE_PDB = CMakeFiles\SemestralnaPracaKlient.dir\
+  TARGET_PDB = SemestralnaPracaKlient.pdb
+
+build CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures\ThreadData.cpp.obj: CXX_COMPILER__SemestralnaPracaKlient_unscanned_Debug C$:\Users\Miso\Desktop\PoS\SemestralnaPracaKlient\connect4\structures\ThreadData.cpp || cmake_object_order_depends_target_SemestralnaPracaKlient
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  OBJECT_DIR = CMakeFiles\SemestralnaPracaKlient.dir
+  OBJECT_FILE_DIR = CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures
+  TARGET_COMPILE_PDB = CMakeFiles\SemestralnaPracaKlient.dir\
+  TARGET_PDB = SemestralnaPracaKlient.pdb
+
+build CMakeFiles\SemestralnaPracaKlient.dir\connect4\Connect4.cpp.obj: CXX_COMPILER__SemestralnaPracaKlient_unscanned_Debug C$:\Users\Miso\Desktop\PoS\SemestralnaPracaKlient\connect4\Connect4.cpp || cmake_object_order_depends_target_SemestralnaPracaKlient
+  FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -std:c++17 -MDd
+  OBJECT_DIR = CMakeFiles\SemestralnaPracaKlient.dir
+  OBJECT_FILE_DIR = CMakeFiles\SemestralnaPracaKlient.dir\connect4
+  TARGET_COMPILE_PDB = CMakeFiles\SemestralnaPracaKlient.dir\
+  TARGET_PDB = SemestralnaPracaKlient.pdb
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target SemestralnaPracaKlient
@@ -71,7 +92,7 @@ build CMakeFiles\SemestralnaPracaKlient.dir\my_socket.cpp.obj: CXX_COMPILER__Sem
 #############################################
 # Link the executable SemestralnaPracaKlient.exe
 
-build SemestralnaPracaKlient.exe: CXX_EXECUTABLE_LINKER__SemestralnaPracaKlient_Debug CMakeFiles\SemestralnaPracaKlient.dir\main.cpp.obj CMakeFiles\SemestralnaPracaKlient.dir\my_socket.cpp.obj
+build SemestralnaPracaKlient.exe: CXX_EXECUTABLE_LINKER__SemestralnaPracaKlient_Debug CMakeFiles\SemestralnaPracaKlient.dir\main.cpp.obj CMakeFiles\SemestralnaPracaKlient.dir\my_socket.cpp.obj CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures\Hra.cpp.obj CMakeFiles\SemestralnaPracaKlient.dir\connect4\structures\ThreadData.cpp.obj CMakeFiles\SemestralnaPracaKlient.dir\connect4\Connect4.cpp.obj
   FLAGS = /DWIN32 /D_WINDOWS /GR /EHsc /Zi /Ob0 /Od /RTC1 -MDd
   LINK_FLAGS = /machine:x64 /debug /INCREMENTAL /subsystem:console
   LINK_LIBRARIES = ws2_32.lib  kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
