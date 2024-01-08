@@ -17,6 +17,7 @@ typedef struct thread_data {
     MySocket *mySocket;
 
     std::mutex mutex;
+
     std::condition_variable jeClientHracNaRade;
 
 } THREAD_DATA;
