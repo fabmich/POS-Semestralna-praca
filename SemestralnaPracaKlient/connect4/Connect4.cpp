@@ -14,6 +14,7 @@ void *produce(void *thread_data) {
         }
 
         if (data->hra.hraSkoncila) {
+            lock.unlock();
             break;
         }
 
@@ -45,14 +46,13 @@ void *produce(void *thread_data) {
 
             }
 
-
             data->hra.hraciaPlocha[riadokIndex][stlpecIndex] = data->hra.znakClientHraca;
 
             data->mySocket->sendData(std::to_string(riadokIndex) + " " + std::to_string(stlpecIndex));
 
             vykresliHraciuPlochu(&data->hra);
             data->hra.jeKlientNaRade = false;
-
+            lock.unlock();
         }
     }
 
@@ -69,6 +69,8 @@ void *consume(void *thread_data) {
 
     while (!data->hra.hraSkoncila) {
         std::string dataFromServer = data->mySocket->receiveData();//ziskanie dat od servra
+
+        std::unique_lock<std::mutex> lock(data->mutex);
 
         if (!dataFromServer.empty() && dataLastRecieved != dataFromServer) {
 
@@ -90,6 +92,8 @@ void *consume(void *thread_data) {
                         data->jeClientHracNaRade.notify_all();
 
                         data->hra.hraciaPlocha[riadok][stlpec] = znakServra;
+
+                        lock.unlock();
                         break;
                     }
 
@@ -119,6 +123,8 @@ void *consume(void *thread_data) {
                 data->hra.hraSkoncila = true;
                 data->hra.jeKlientNaRade = true;
                 data->jeClientHracNaRade.notify_all();
+
+                lock.unlock();
                 break;
             }
         }
@@ -142,7 +148,6 @@ void *consume(void *thread_data) {
         std::cout << "Vyhral hrac na servri, gratulujeme!" << std::endl;
 
     } else if (data->hra.vysledokHry == 2) {
-        std::cout << "Vyhrali ste, gratulujeme!" << std::endl;
 
         if (data->hra.akoVyhral == 1) {
             std::cout << "Vidim 4 znaky (" <<  data->hra.znakClientHraca<<") horizontalne" << std::endl;
@@ -155,7 +160,7 @@ void *consume(void *thread_data) {
             std::cout << "Vidim 4 znaky (" <<  data->hra.znakClientHraca<<") diagonale" << std::endl;
         }
 
-        std::cout << "Vyhral hrac na servri, gratulujeme!"  << std::endl;
+        std::cout << "Vyhrali ste, gratulujeme!" << std::endl;
 
     } else {
         std::cout << "Nikto nevyhral, hracia plocha je plna" << std::endl;
