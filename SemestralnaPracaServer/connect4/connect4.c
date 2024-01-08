@@ -8,7 +8,7 @@
 #include "structures/thread_data.h"
 
 
-//ziskanie dat od clienta, skopirovane z cvika
+//ziskanie dat od clienta
 _Bool try_read_data_from_client(struct thread_data *data) {
     _Bool result = false;
 
@@ -18,7 +18,7 @@ _Bool try_read_data_from_client(struct thread_data *data) {
     if (active_socket_try_get_read_data(data->server_socket, &r_buf)) {
         if (r_buf.size > 0) {
             char_buffer_copy(&data->recievedDataFromClient, &r_buf);
-//            printf("%s", data->recievedDataFromClient.data);
+
             char_buffer_destroy(&r_buf);
             return true;
         }
@@ -105,7 +105,6 @@ void *produce(void *thread_data) {
                 // pthread_mutex_lock(&data->mutex);
                 if (validujHru(&data->hra, data->hra.znakServerHraca)) {
                     data->hra.hraSkoncila = true;
-//                    data->hra.ktoVyhral = 1;
                 }
                 data->hra.jeServerHracNaRade = false;
                 pthread_mutex_unlock(&data->mutex);
@@ -148,7 +147,7 @@ void *consume(void *thread_data) {
                 }
                 pthread_mutex_unlock(&data->mutex);
 
-                //formatovanie dat pre klienta, momentalne sa posiela suradnica X a Y posledneho tahu serverHraca
+                //formatovanie dat pre klienta, posiela suradnica riadku a stlpca posledneho tahu serverHraca
                 pthread_mutex_lock(&data->mutex);
                 int zacinaServer = 0;
                 if (data->hra.prveKolo == 1) {
@@ -165,19 +164,18 @@ void *consume(void *thread_data) {
 
 
                 //odoslanie dat klientovy
+//                pthread_mutex_lock(&data->mutex);
+
                 if (!boloposlaneraz) {
-//                    printf("%s",data->hra.dataSendToClient.data);
 
                     active_socket_write_data_aspon_toto_funguje(data->server_socket, data->hra.dataSendToClient.data);
 
-//                    pthread_mutex_lock(&data->mutex);
                     boloposlaneraz = true;
 //                    pthread_mutex_unlock(&data->mutex);
-
                 }
+//                    pthread_mutex_unlock(&data->mutex);
 
 
-                //prazdny loop pre pockanie na data od clienta
                 //citanie a formatovanie dat od klienta
                 pthread_mutex_lock(&data->mutex);
                 while (!try_read_data_from_client(data)) {}
@@ -206,7 +204,6 @@ void *consume(void *thread_data) {
                 pthread_mutex_lock(&data->hra.hraciaPlochaMutex);
                 if (validujHru(&data->hra, data->hra.znakClientHraca)) {
                     data->hra.hraSkoncila = true;
-//                    data->hra.ktoVyhral = 2;
                 }
 
                 data->hra.jeServerHracNaRade = true;
@@ -221,6 +218,7 @@ void *consume(void *thread_data) {
     pthread_mutex_lock(&data->mutex);
 
 //    printf("\nDEBUG: HRA SKONCILA (consume output)\n");
+//odoslanie vysledku hry clientovi
     char buffer[256];
     sprintf(buffer, "%d %d %d %c %c 0 %d",data->hra.suradnicePoslednehoTahuServra.riadok,data->hra.suradnicePoslednehoTahuServra.stlpec,
             data->hra.ktoVyhral, data->hra.znakServerHraca, data->hra.znakClientHraca
