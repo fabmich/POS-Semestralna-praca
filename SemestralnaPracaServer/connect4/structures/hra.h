@@ -16,7 +16,7 @@
 typedef struct coords {
     int riadok;
     int stlpec;
-    int a;
+//    int a;
 } COORDS;
 
 typedef struct hra {
